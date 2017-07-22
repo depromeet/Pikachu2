@@ -6,6 +6,7 @@ import NavBar from './NavBar';
 import Container from './Container';
 import Menu from './Menu';
 import Noop from './Noop';
+import HeaderLink from './HeaderLink';
 import Logo from './Logo';
 
 const HeaderWrapper = styled.div`
@@ -23,13 +24,13 @@ class Header extends React.Component { // eslint-disable-line react/prefer-state
     return (
       <HeaderWrapper>
         <Container>
-          <Logo>PIKACHU</Logo>
+          <Logo to={'/'}>PIKACHU</Logo>
           <NavBar>
             <Noop />
             <Menu>item1</Menu>
-            <Menu>item2</Menu>
-            <Menu>item3</Menu>
-            <Profile src={'//s-media-cache-ak0.pinimg.com/736x/76/47/9d/76479dd91dc55c2768ddccfc30a4fbf5--pikachu-halloween-costume-diy-halloween-costumes.jpg'}></Profile>
+            <Menu>Login</Menu>
+            <HeaderLink to={'/login'}>Login</HeaderLink>
+            <Profile src={'//s-media-cache-ak0.pinimg.com/736x/76/47/9d/76479dd91dc55c2768ddccfc30a4fbf5--pikachu-halloween-costume-diy-halloween-costumes.jpg'} alt={'profile'}></Profile>
           </NavBar>
         </Container>
       </HeaderWrapper>
