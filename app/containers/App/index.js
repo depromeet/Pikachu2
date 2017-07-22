@@ -22,6 +22,7 @@ const AppWrapper = styled.div`
   width:100%;
   padding: 0;
   flex-direction: column;
+
 `;
 // Helmet이 뭔지좀 봐야할듯 ..
 export function App(props) {
