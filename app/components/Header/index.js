@@ -1,13 +1,8 @@
 import React from 'react';
-import { FormattedMessage } from 'react-intl';
 
 import styled from 'styled-components';
-import A from './A';
 import Profile from './Profile';
 import NavBar from './NavBar';
-import HeaderLink from './HeaderLink';
-import Banner from './banner.jpg';
-import messages from './messages';
 import Container from './Container';
 import Menu from './Menu';
 import Noop from './Noop';

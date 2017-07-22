@@ -1,6 +1,4 @@
 /* global google */
-import _ from 'lodash';
-
 import React, {
   Component,
 } from 'react';
@@ -46,7 +44,7 @@ export default class GettingStartedExample extends Component {
   handleMarkerRightClick = this.handleMarkerRightClick.bind(this);
 
   handleMapLoad(map) {
-    this._mapComponent = map;
+    this._mapComponent = map; // eslint-disable-line no-underscore-dangle
     if (map) {
       console.log(map.getZoom());
     }
@@ -70,7 +68,7 @@ export default class GettingStartedExample extends Component {
     });
 
     if (nextMarkers.length === 3) {
-      this.props.toast(
+      this.props.toast( // eslint-disable-line react/prop-types
         'Right click on the marker to remove it',
         'Also check the code!'
       );
