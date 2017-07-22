@@ -69,7 +69,7 @@ const store = configureStore(initialState, browserHistory);
 const history = syncHistoryWithStore(browserHistory, store, {
   selectLocationState: makeSelectLocationState(),
 });
-
+// url별 어떤 라우터가 실행이 될지 설정한다. 기본적으로 App이라는 컴포넌트가 감싸고 그 안에 하위 컴포넌트가 들어가는듯..
 // Set up the router, wrapping all Routes in the App component
 const rootRoute = {
   component: App,

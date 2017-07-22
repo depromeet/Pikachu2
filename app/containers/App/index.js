@@ -14,23 +14,24 @@ import Header from 'components/Header';
 import Footer from 'components/Footer';
 import withProgressBar from 'components/ProgressBar';
 
+// react root 밑에 바로 들어가는 컴포넌트
 const AppWrapper = styled.div`
-  max-width: calc(768px + 16px * 2);
   margin: 0 auto;
   display: flex;
   min-height: 100%;
-  padding: 0 16px;
+  width:100%;
+  padding: 0;
   flex-direction: column;
 `;
-
+// Helmet이 뭔지좀 봐야할듯 ..
 export function App(props) {
   return (
     <AppWrapper>
       <Helmet
-        titleTemplate="%s - React.js Boilerplate"
+        titleTemplate="%s - 어서오세요"
         defaultTitle="React.js Boilerplate"
         meta={[
-          { name: 'description', content: 'A React.js Boilerplate application' },
+          { name: 'description', content: '피카츄 모임이 쉬워진다. 각종 모임 만남 서비스' },
         ]}
       />
       <Header />
