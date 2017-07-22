@@ -29,7 +29,7 @@ class Header extends React.Component { // eslint-disable-line react/prefer-state
             <Menu>item1</Menu>
             <Menu>item2</Menu>
             <Menu>item3</Menu>
-            <Profile src={'https://graph.facebook.com/1920309008233737/picture?type=large'}></Profile>
+            <Profile src={'//s-media-cache-ak0.pinimg.com/736x/76/47/9d/76479dd91dc55c2768ddccfc30a4fbf5--pikachu-halloween-costume-diy-halloween-costumes.jpg'}></Profile>
           </NavBar>
         </Container>
       </HeaderWrapper>
