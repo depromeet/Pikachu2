@@ -6,3 +6,4 @@ export default styled.button`
   background: #fff;
   border: 1px solid #d9d9d9;
 `;
+

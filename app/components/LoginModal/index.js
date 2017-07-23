@@ -2,10 +2,10 @@
 import React from 'react';
 
 import styled from 'styled-components';
-import Container from './Container';
+import GoogleLogin from '../GoogleLogin'; // 'react-google-login';
 import FacebookLogin from '../FacebookLogin';
-import GoogleButton from './GoogleButton';
-import KakaoButton from './KakaoButton';
+import KakaoLogin from '../KakaoLogin';
+import Container from './Container';
 import LoginButton from './LoginButton';
 import Separator from '../Separator';
 import Label from './Label';
@@ -41,22 +41,43 @@ class LoginModal extends React.Component { // eslint-disable-line react/prefer-s
     const responseFacebook = (response) => {
       console.log(response);
     };
+    const responseGoogle = (response) => {
+      console.log(response);
+    };
+
+    const success = (response) => {
+      console.log(response);
+    };
+
+    const failure = (error) => {
+      console.log(error);
+    };
 
     return (
       <LoginModalWrapper tabindex={'-1'}>
         <Container>
           <FacebookLogin
             appId="1939408019672376"
-            autoLoad={true}
+            autoLoad={false}
             fields="name,email,picture"
             callback={responseFacebook}
           >
             Facebook으로 로그인
           </FacebookLogin>
-          <GoogleButton
-            onClick={this.onGoogleLoginClick}
-          >Google로 로그인</GoogleButton>
-          <KakaoButton>KakaoTalk으로 로그인</KakaoButton>
+          <GoogleLogin
+            clientId="363757123134-ilff0phacekcbf3m899mk25r6dr3b7n1.apps.googleusercontent.com"
+            onSuccess={responseGoogle}
+            onFailure={responseGoogle}
+          >
+          Google로 로그인
+          </GoogleLogin>
+          <KakaoLogin
+            jsKey="a71d049ed770a4d656a75f0ff537456f"
+            onSuccess={success}
+            onFailure={failure}
+            getProfile={true}
+          >
+          KakaoTalk으로 로그인</KakaoLogin>
           <Separator>or</Separator>
           <Input
             type={'text'}
