@@ -6,7 +6,6 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 import styled from 'styled-components';
-import H1 from 'components/H1';
 
 // react root 밑에 바로 들어가는 컴포넌트
 const LoginWrapper = styled.div`
