@@ -29,11 +29,9 @@ const LoginModalWrapper = styled.div`
 
 class LoginModal extends React.Component { // eslint-disable-line react/prefer-stateless-function
   onKakaoLoginClick() {
-    console.log('hello');
   }
 
   onGoogleLoginClick() {
-    console.log('hello');
   }
 
   render() {

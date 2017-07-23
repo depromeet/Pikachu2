@@ -5,5 +5,5 @@ export default styled.button`
   height: 40px;
   background: #4267b2;
   color: #fff;
-  border: 1px solid #29487d
+  border: 1px solid #3C5DB6;
 `;
