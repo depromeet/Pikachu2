@@ -1,8 +1,9 @@
+/* eslint-disable react/jsx-boolean-value */
 import React from 'react';
 
 import styled from 'styled-components';
 import Container from './Container';
-import FacebookButton from './FacebookButton';
+import FacebookLogin from '../FacebookLogin';
 import GoogleButton from './GoogleButton';
 import KakaoButton from './KakaoButton';
 import LoginButton from './LoginButton';
@@ -33,14 +34,25 @@ class LoginModal extends React.Component { // eslint-disable-line react/prefer-s
 
   onGoogleLoginClick() {
   }
+  onSignupClick() {
 
+  }
   render() {
+    const responseFacebook = (response) => {
+      console.log(response);
+    };
+
     return (
       <LoginModalWrapper tabindex={'-1'}>
         <Container>
-          <FacebookButton>
+          <FacebookLogin
+            appId="1939408019672376"
+            autoLoad={true}
+            fields="name,email,picture"
+            callback={responseFacebook}
+          >
             Facebook으로 로그인
-          </FacebookButton>
+          </FacebookLogin>
           <GoogleButton
             onClick={this.onGoogleLoginClick}
           >Google로 로그인</GoogleButton>
@@ -61,7 +73,7 @@ class LoginModal extends React.Component { // eslint-disable-line react/prefer-s
           </Label>
           <LoginButton>로그인</LoginButton>
           <Separator />
-          <Signup></Signup>
+          <Signup onSignupClick={this.onSignupClick}></Signup>
         </Container>
       </LoginModalWrapper>
     );

@@ -33,6 +33,6 @@ function Signup(props) {
 }
 
 Signup.propTypes = {
-  onSignupClick: PropTypes.function,
+  onSignupClick: PropTypes.func,
 };
 export default Signup;
