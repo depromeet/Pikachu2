@@ -11,7 +11,7 @@ import Helmet from 'react-helmet';
 import styled from 'styled-components';
 
 import Header from 'components/Header';
-import Footer from 'components/Footer';
+// import Footer from 'components/Footer';
 import withProgressBar from 'components/ProgressBar';
 
 // react root 밑에 바로 들어가는 컴포넌트
@@ -37,7 +37,6 @@ export function App(props) {
       />
       <Header />
       {React.Children.toArray(props.children)}
-      <Footer />
     </AppWrapper>
   );
 }

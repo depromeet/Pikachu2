@@ -4,6 +4,7 @@ export default styled.div`
   display: flex;
   margin: 0 auto;
   padding: 10px 0;
-  max-width: 1000px;
-  flex: 1;
+  width: 90%;
+  min-width: 650px;
+  max-width: 1750px;
 `;

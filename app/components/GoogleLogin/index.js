@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 const GoogleButton = styled.button`
   margin: 5px 0;
   height: 40px;
-  background: #fff;
+  background: #E95151;
   border: 1px solid #d9d9d9;
 `;
 

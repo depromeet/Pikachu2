@@ -2,6 +2,7 @@
 import React from 'react';
 
 import styled from 'styled-components';
+// import ReactModal from 'react-modal'
 import GoogleLogin from '../GoogleLogin'; // 'react-google-login';
 import FacebookLogin from '../FacebookLogin';
 import KakaoLogin from '../KakaoLogin';
@@ -16,7 +17,7 @@ const LoginModalWrapper = styled.div`
   position:fixed;
   z-index:1000;
   margin: 0 auto;
-  display: flex;
+  display: ${(props) => props.showModal ? 'flex' : 'none'};
   overflow: none;
   width:100%;
   min-height:100%;
@@ -29,6 +30,9 @@ const LoginModalWrapper = styled.div`
 `;
 
 class LoginModal extends React.Component { // eslint-disable-line react/prefer-stateless-function
+  state = {
+    showModal: false,
+  }
   onKakaoLoginClick() {
   }
 
@@ -52,10 +56,10 @@ class LoginModal extends React.Component { // eslint-disable-line react/prefer-s
     const failure = (error) => {
       console.log(error);
     };
-
+    // showModal에 따라 달라진다.
     return (
-      <LoginModalWrapper tabindex={'-1'}>
-        <Container>
+      <LoginModalWrapper tabindex={'-1'} showModal={false}>
+        <Container onClick={this.closeModal}>
           <FacebookLogin
             appId="1939408019672376"
             autoLoad={false}

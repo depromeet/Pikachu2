@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export default styled.div`
-  padding: 6px 0;
-  min-width: 70px;
-  color: #fff;
+  display:flex;
+  width: 350px;
+  border: none;
 `;

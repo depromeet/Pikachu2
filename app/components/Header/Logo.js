@@ -12,5 +12,5 @@ export default styled(Link)`
   user-select: none;
   cursor: pointer;
   outline: 0;
-  color: #000;
+  color: #fff;
 `;

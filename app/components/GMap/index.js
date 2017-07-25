@@ -9,12 +9,13 @@ import {
   GoogleMap,
   Marker,
 } from 'react-google-maps';
+import Container from './Container';
 
 const GettingStartedGoogleMap = withGoogleMap((props) => (
   <GoogleMap
     ref={props.onMapLoad}
-    defaultZoom={3}
-    defaultCenter={{ lat: -25.363882, lng: 131.044922 }}
+    defaultZoom={18}
+    defaultCenter={{ lat: 37.4818227, lng: 126.9079878 }}
     onClick={props.onMapClick}
   >
     {props.markers.map((marker) => (
@@ -31,8 +32,8 @@ export default class GettingStartedExample extends Component {
   state = {
     markers: [{
       position: {
-        lat: 25.0112183,
-        lng: 121.52067570000001,
+        lat: 37.4828240,
+        lng: 126.9100000,
       },
       key: 'Taiwan',
       defaultAnimation: 2,
@@ -89,7 +90,7 @@ export default class GettingStartedExample extends Component {
 
   render() {
     return (
-      <div style={{ height: '1000px' }}>
+      <Container>
         <Helmet
           title="피카츄 만남이 쉬워진다."
         />
@@ -105,7 +106,7 @@ export default class GettingStartedExample extends Component {
           markers={this.state.markers}
           onMarkerRightClick={this.handleMarkerRightClick}
         />
-      </div>
+      </Container>
     );
   }
 }
