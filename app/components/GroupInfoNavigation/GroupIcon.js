@@ -2,8 +2,9 @@ import React, { PropTypes } from 'react';
 import styled from 'styled-components';
 
 const Wrapper = styled.li`
-  &:nth-child(3) {
-    box-shadow: 2px 0 0 0 #206DBB inset;
+  margin: 3px 0;
+  &:nth-child(2) {
+    box-shadow: 3px 0 0 0 #206DBB inset;
   }
 `;
 
@@ -11,7 +12,7 @@ const Wrapper = styled.li`
 const Icon = styled.div`
   width: 34px;
   height: 34px;
-  margin: 4px 8px;
+  margin: 3px 8px;
   background-color: #ededed;
   background-image: url('${(props) => props.src}');
   background-size: 34px 34px;

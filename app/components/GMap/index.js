@@ -14,7 +14,7 @@ import Container from './Container';
 const GettingStartedGoogleMap = withGoogleMap((props) => (
   <GoogleMap
     ref={props.onMapLoad}
-    defaultZoom={18}
+    defaultZoom={14}
     defaultCenter={{ lat: 37.4818227, lng: 126.9079878 }}
     onClick={props.onMapClick}
   >

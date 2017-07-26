@@ -5,5 +5,5 @@ export default styled.div`
   display:flex;
   float:right;
   padding-bottom: 1px;
-  box-shadow: 0 -1px 0 0 #ececec inset;
+  border-bottom: 1px solid #e3e3e3;
 `;
