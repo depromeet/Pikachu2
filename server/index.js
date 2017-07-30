@@ -4,15 +4,19 @@ const express = require('express');
 const logger = require('./logger');
 
 const argv = require('minimist')(process.argv.slice(2));
+const swaggerUi = require('swagger-ui-express');
 const setup = require('./middlewares/frontendMiddleware');
 const resolve = require('path').resolve;
 const app = express();
+
+const swaggerDocument = require('./api/docs/swagger.json');
 
 require('dotenv').load({ path: '.env' });
 
 const isDev = process.env.NODE_ENV !== 'production';
 const ngrok = (isDev && process.env.ENABLE_TUNNEL) || argv.tunnel ? require('ngrok') : false;
 
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 // If you need a backend, e.g. an API, add your custom backend-specific middleware here
 // app.use('/api', myApi);
 

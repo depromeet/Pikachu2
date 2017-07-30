@@ -12,6 +12,7 @@ const SpanWrapper = styled.span`
   background-color: #fff;
   display: inline-block;
   padding: 8px;
+  color: #000;
 `;
 
 const BlankWrapper = styled.span`
