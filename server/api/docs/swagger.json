@@ -5,7 +5,7 @@
      "description": "피카츄 스웨거 api리스트 문서입니다.",
      "version": "1.0",
      "contact": {
-       "email": "apiteam@swagger.io"
+       "email": "kane7274@gmail.com"
      }
    },
    "produces": ["application/json"],
