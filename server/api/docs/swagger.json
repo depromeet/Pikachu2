@@ -56,7 +56,28 @@
           "application/json"
           ]
        }
-     }
+     },
+    "/meets/{meetNo}/joinusers": {
+      "get": {
+         "summary": "모임에 대한 참여자 정보",
+         "tags": ["/meets"],
+         "description": "참여할 수 있는 모임중에 다른사람들이 참여중인 정보를 가지고온다.",
+         "parameters": [
+          {
+            "name": "meetNo",
+            "in": "path",
+            "description": "참여자의 정보를 가지고 오기 위한 모임번호",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+         "responses": {},
+         "produces": [
+          "application/json"
+          ]
+       }
+    }
 
    }
 }

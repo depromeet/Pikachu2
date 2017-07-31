@@ -28,3 +28,16 @@ exports.getMeetupInfoByCmnt = async (req, res) => {
     result: true,
   });
 };
+
+exports.getMeetUsersInfo = async (req, res) => {
+  const result = await dml.getMeetUsersInfo({
+    cond: {
+      meetNo: 1,
+    },
+  });
+
+  res.send({
+    data: result,
+    result: true,
+  });
+};

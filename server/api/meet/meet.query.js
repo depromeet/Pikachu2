@@ -46,6 +46,23 @@ module.exports = {
       ) T_OPEN_MEET
       {CMNT_NO}
     `,
+    meetUsersInfo: `
+      SELECT
+        T_U.USER_NO,
+          USER_NAME,
+          PICTURE
+      FROM (
+        SELECT
+          *
+        FROM TB_MEET_JOIN
+        WHERE MEET_NO=? AND CANCLE_YN='N' AND CONFIRM_YN='Y'
+      ) T_M
+      INNER JOIN (
+        SELECT * FROM TB_USER_INFO
+        WHERE AUTH_YN='Y' AND USE_YN='Y'
+      ) T_U
+      ON T_M.USER_NO = T_U.USER_NO
+    `,
   },
   insert: {
 
