@@ -97,20 +97,39 @@ const materialStyles = {
   },
 };
 
+
 class MeetUpInfoList extends React.Component {
   state = {
     MeetUpElements: [],
+  };
+  onTouchListItem = (event, value) => {
+    console.log(event.target);
+    console.log(value);
+  };
 
-  }
   render() {
     return (
       <MuiThemeProvider>
         <Wrapper>
-          <List>
-            <ListItem innerDivStyle={materialStyles.listItem}>
+          <List defaultValue={2}>
+            <ListItem
+              onClick={(event) => { this.onTouchListItem(event, 1); }}
+              value={1}
+              primaryText="Brendan Lim"
+              nestedItems={[
+                <ListItem
+                  value={2}
+                  primaryText="Grace Ng"
+                />,
+              ]}
+            />
+            <ListItem
+              value={0} innerDivStyle={materialStyles.listItem}
+              onClick={(event) => { this.onTouchListItem(event, 0); }}
+            >
               <MeetInfoWrapper>
                 <MeetInfoHeader>
-                  <MIHTitle>디프만 정기세션</MIHTitle>
+                  <MIHTitle>라이츄 정기세션</MIHTitle>
                   <MIHLocInfo>7.29 디캠프</MIHLocInfo>
                 </MeetInfoHeader>
                 <MIHContent>
@@ -124,7 +143,7 @@ class MeetUpInfoList extends React.Component {
               </MeetInfoWrapper>
             </ListItem>
 
-            <ListItem innerDivStyle={materialStyles.listItem}>
+            <ListItem value={3} innerDivStyle={materialStyles.listItem}>
               <MeetInfoWrapper>
                 <MeetInfoHeader>
                   <MIHTitle>디프만 정기세션</MIHTitle>
@@ -139,92 +158,6 @@ class MeetUpInfoList extends React.Component {
                   <MIHCProgressInfo>5/10</MIHCProgressInfo>
                 </MIHCProgressWrapper>
               </MeetInfoWrapper>
-            </ListItem>
-
-            <ListItem innerDivStyle={materialStyles.listItem}>
-              <MeetInfoWrapper>
-                <MeetInfoHeader>
-                  <MIHTitle>디프만 정기세션</MIHTitle>
-                  <MIHLocInfo>7.29 디캠프</MIHLocInfo>
-                </MeetInfoHeader>
-                <MIHContent>
-                  <MIHCIcon src={'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZDg9jXXfLo6WlibVQGYAH_gO8TYvPlqbOHD7v9Ks-i0G_Eat8nA'} />
-                  <MIHCInfo>디프만 | 김은영</MIHCInfo>
-                </MIHContent>
-                <MIHCProgressWrapper>
-                  <MIHCProgressBar><MIHCProgress /></MIHCProgressBar>
-                  <MIHCProgressInfo>5/10</MIHCProgressInfo>
-                </MIHCProgressWrapper>
-              </MeetInfoWrapper>
-            </ListItem>
-
-            <ListItem innerDivStyle={materialStyles.listItem}>
-              <MeetInfoWrapper>
-                <MeetInfoHeader>
-                  <MIHTitle>디프만 정기세션</MIHTitle>
-                  <MIHLocInfo>7.29 디캠프</MIHLocInfo>
-                </MeetInfoHeader>
-                <MIHContent>
-                  <MIHCIcon src={'https://s3-us-west-2.amazonaws.com/slack-files2/avatars/2016-05-03/39715050438_22b58824847a2be9c8e6_132.png'} />
-                  <MIHCInfo>디프만 | 김은영</MIHCInfo>
-                </MIHContent>
-                <MIHCProgressWrapper>
-                  <MIHCProgressBar><MIHCProgress /></MIHCProgressBar>
-                  <MIHCProgressInfo>5/10</MIHCProgressInfo>
-                </MIHCProgressWrapper>
-              </MeetInfoWrapper>
-            </ListItem>
-
-            <ListItem innerDivStyle={materialStyles.listItem}>
-              <MeetInfoWrapper>
-                <MeetInfoHeader>
-                  <MIHTitle>디프만 정기세션</MIHTitle>
-                  <MIHLocInfo>7.29 디캠프</MIHLocInfo>
-                </MeetInfoHeader>
-                <MIHContent>
-                  <MIHCIcon src={'https://s3-us-west-2.amazonaws.com/slack-files2/avatars/2016-05-03/39715050438_22b58824847a2be9c8e6_132.png'} />
-                  <MIHCInfo>디프만 | 김은영</MIHCInfo>
-                </MIHContent>
-                <MIHCProgressWrapper>
-                  <MIHCProgressBar><MIHCProgress /></MIHCProgressBar>
-                  <MIHCProgressInfo>5/10</MIHCProgressInfo>
-                </MIHCProgressWrapper>
-              </MeetInfoWrapper>
-            </ListItem>
-
-            <ListItem innerDivStyle={materialStyles.listItem}>
-              <MeetInfoWrapper>
-                <MeetInfoHeader>
-                  <MIHTitle>디프만 정기세션</MIHTitle>
-                  <MIHLocInfo>7.29 디캠프</MIHLocInfo>
-                </MeetInfoHeader>
-                <MIHContent>
-                  <MIHCIcon src={'https://s3-us-west-2.amazonaws.com/slack-files2/avatars/2016-05-03/39715050438_22b58824847a2be9c8e6_132.png'} />
-                  <MIHCInfo>디프만 | 김은영</MIHCInfo>
-                </MIHContent>
-                <MIHCProgressWrapper>
-                  <MIHCProgressBar><MIHCProgress /></MIHCProgressBar>
-                  <MIHCProgressInfo>5/10</MIHCProgressInfo>
-                </MIHCProgressWrapper>
-              </MeetInfoWrapper>
-            </ListItem>
-
-            <ListItem innerDivStyle={materialStyles.listItem}>
-              <MeetInfoWrapper>
-                <MeetInfoHeader>
-                  <MIHTitle>디프만 정기세션</MIHTitle>
-                  <MIHLocInfo>7.29 디캠프</MIHLocInfo>
-                </MeetInfoHeader>
-                <MIHContent>
-                  <MIHCIcon src={'https://s3-us-west-2.amazonaws.com/slack-files2/avatars/2016-05-03/39715050438_22b58824847a2be9c8e6_132.png'} />
-                  <MIHCInfo>디프만 | 김은영</MIHCInfo>
-                </MIHContent>
-                <MIHCProgressWrapper>
-                  <MIHCProgressBar><MIHCProgress /></MIHCProgressBar>
-                  <MIHCProgressInfo>5/10</MIHCProgressInfo>
-                </MIHCProgressWrapper>
-              </MeetInfoWrapper>
-
             </ListItem>
           </List>
 
