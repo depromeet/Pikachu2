@@ -44,6 +44,7 @@ module.exports = {
           ) T_PRIVATE_MEET
         ) A
       ) T_OPEN_MEET
+      {CMNT_NO}
     `,
   },
   insert: {

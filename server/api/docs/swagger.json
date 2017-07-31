@@ -35,6 +35,28 @@
           "application/json"
           ]
        }
+     },
+     "/meets/{cmntNo}": {
+       "get": {
+         "summary": "모임정보리스트",
+         "tags": ["/meets"],
+         "description": "회원이 소속한 커뮤니티에서 진행중인 모임정보를 가지고 옵니다.\n커뮤니티 클릭 후 좌측 사이드메뉴모임정보리스트(아직정렬없어요)",
+         "parameters": [
+          {
+            "name": "cmntNo",
+            "in": "path",
+            "description": "모임을 주최하는 커뮤니티 번호",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+         "responses": {},
+         "produces": [
+          "application/json"
+          ]
+       }
      }
+
    }
 }
