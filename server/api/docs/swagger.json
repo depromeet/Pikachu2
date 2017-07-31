@@ -1,22 +1,27 @@
 {
    "swagger": "2.0",
    "info": {
-     "title": "",
-     "description": "",
-     "version": "1.0"
+     "title": "피카츄 만남이 쉬워진다.(가명)",
+     "description": "피카츄 스웨거 api리스트 문서입니다.",
+     "version": "1.0",
+     "contact": {
+       "email": "apiteam@swagger.io"
+     }
    },
    "produces": ["application/json"],
-   "host": "localhost:8000",
-   "basePath": "/api/swagger/v1",
+   "host": "localhost:3100",
+   "basePath": "/cmnts",
    "paths": {
-     "/test1": {
+     "/": {
        "get": {
-         "x-swagger-router-controller": "middleware-name1",
-         "operationId": "swagTest",
-         "tags": ["/test"],
-         "description": "",
+         "summary": "커뮤니티 리스트",
+         "tags": ["/cmnts"],
+         "description": "회원이 소속한 커뮤니티의 정보를 가지고 옵니다.\n좌측 사이드메뉴그룹리스트",
          "parameters": [],
-         "responses": {}
+         "responses": {},
+         "produces": [
+          "application/json"
+          ]
        }
      }
    }

@@ -1,0 +1,5 @@
+{
+  "name":"user",
+  "main":"user.router.js",
+  "version":"1.0.0"
+}

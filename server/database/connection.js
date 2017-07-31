@@ -1,7 +1,7 @@
-import mysql from 'mysql';
-import winstron from 'winston';
+const mysql = require('mysql');
+const winstron = require('winston');
 
-import u from '../utils/util';
+const u = require('../utils/util');
 
 const pool = mysql.createPool({
   host: process.env.DATABASE_HOST,
@@ -13,6 +13,9 @@ const pool = mysql.createPool({
 
 
 pool.getConnection((err, conn) => { // 로딩되면 어떤 데이터 베이스를 사용할지 결정한다.
+  if (err) {
+    console.log(err);
+  }
   conn.query(`USE ${process.env.DATABASE_NAME}`, () => {
     conn.release();
   });
@@ -28,7 +31,7 @@ const getConnection = (callback) => {
 // Helper function for querying the db; releases the db connection
 // callback(err, rows)
 // 디버깅 모드일 때 queryString을 출력해 줄 수 있게 해줄 것..
-const query = (queryString, params) => new Promise((res, rej) => {
+exports.query = (queryString, params) => new Promise((res, rej) => {
   getConnection((err, conn) => {
     if (err) {
       rej(err);
@@ -44,5 +47,3 @@ const query = (queryString, params) => new Promise((res, rej) => {
     winstron.log(`info ${sql}`);
   });
 });
-
-export default { query };

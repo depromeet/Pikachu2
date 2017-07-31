@@ -1,4 +1,5 @@
 /* global google */
+/* eslint-disable react/jsx-boolean-value */
 import canUseDOM from 'can-use-dom';
 import React, {
   Component,
