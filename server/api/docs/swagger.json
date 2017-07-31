@@ -10,13 +10,25 @@
    },
    "produces": ["application/json"],
    "host": "localhost:3100",
-   "basePath": "/cmnts",
+   "basePath": "/",
    "paths": {
-     "/": {
+     "/cmnts": {
        "get": {
          "summary": "커뮤니티 리스트",
          "tags": ["/cmnts"],
          "description": "회원이 소속한 커뮤니티의 정보를 가지고 옵니다.\n좌측 사이드메뉴그룹리스트",
+         "parameters": [],
+         "responses": {},
+         "produces": [
+          "application/json"
+          ]
+       }
+     },
+      "/meets": {
+       "get": {
+         "summary": "모임정보리스트",
+         "tags": ["/meets"],
+         "description": "회원이 참여할 수 있는 모임정보를 가지고 옵니다.\n좌측 사이드메뉴모임정보리스트(아직정렬없어요)",
          "parameters": [],
          "responses": {},
          "produces": [

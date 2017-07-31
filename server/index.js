@@ -13,6 +13,7 @@ const swaggerDocument = require('./api/docs/swagger.json');
 
 const userRouter = require('./api/user');
 const cmntRouter = require('./api/cmnt');
+const meetRouter = require('./api/meet');
 
 const app = express();
 
@@ -28,6 +29,7 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 // app.use('/api', myApi);
 app.use('/user', userRouter);
 app.use('/cmnts', cmntRouter);
+app.use('/meets', meetRouter);
 
 // In production we need to pass these values in instead of relying on webpack
 setup(app, {
