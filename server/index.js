@@ -3,6 +3,7 @@ const express = require('express');
 const argv = require('minimist')(process.argv.slice(2));
 const swaggerUi = require('swagger-ui-express');
 const path = require('path');
+const cors = require('cors');
 const bodyParser = require('body-parser');
 const resolve = path.resolve;
 require('dotenv').load({ path: '.env' });
@@ -16,7 +17,7 @@ const cmntRouter = require('./api/cmnt');
 const meetRouter = require('./api/meet');
 
 const app = express();
-
+app.use(cors());
 
 const isDev = process.env.NODE_ENV !== 'production';
 const ngrok = (isDev && process.env.ENABLE_TUNNEL) || argv.tunnel ? require('ngrok') : false;
