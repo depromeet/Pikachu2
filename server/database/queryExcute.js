@@ -8,7 +8,6 @@ module.exports = {
     return list['0'];
   },
 
-
   /**
    * @todo list의 길이를 포함해서 반환하도록 만들어야 됩니다.
    *

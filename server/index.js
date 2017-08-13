@@ -20,7 +20,10 @@ const app = express();
 app.use(cors());
 
 const isDev = process.env.NODE_ENV !== 'production';
-const ngrok = (isDev && process.env.ENABLE_TUNNEL) || argv.tunnel ? require('ngrok') : false;
+const ngrok =
+  (isDev && process.env.ENABLE_TUNNEL) || argv.tunnel
+    ? require('ngrok')
+    : false;
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());

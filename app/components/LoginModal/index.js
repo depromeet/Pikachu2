@@ -14,33 +14,30 @@ import Signup from './Signup';
 import Input from '../Input';
 
 const LoginModalWrapper = styled.div`
-  position:fixed;
-  z-index:1000;
+  position: fixed;
+  z-index: 1000;
   margin: 0 auto;
-  display: ${(props) => props.showModal ? 'flex' : 'none'};
+  display: ${(props) => (props.showModal ? 'flex' : 'none')};
   overflow: none;
-  width:100%;
-  min-height:100%;
-  left:0;
+  width: 100%;
+  min-height: 100%;
+  left: 0;
   top: 0;
   background: rgba(0, 0, 0, 0.5);
 
   -webkit-justify-content: center;
-          justify-content: center;
+  justify-content: center;
 `;
 
-class LoginModal extends React.Component { // eslint-disable-line react/prefer-stateless-function
+class LoginModal extends React.Component {
+  // eslint-disable-line react/prefer-stateless-function
   state = {
     showModal: false,
-  }
-  onKakaoLoginClick() {
-  }
+  };
+  onKakaoLoginClick() {}
 
-  onGoogleLoginClick() {
-  }
-  onSignupClick() {
-
-  }
+  onGoogleLoginClick() {}
+  onSignupClick() {}
   render() {
     const responseFacebook = (response) => {
       console.log(response);
@@ -73,7 +70,7 @@ class LoginModal extends React.Component { // eslint-disable-line react/prefer-s
             onSuccess={responseGoogle}
             onFailure={responseGoogle}
           >
-          Google로 로그인
+            Google로 로그인
           </GoogleLogin>
           <KakaoLogin
             jsKey="a71d049ed770a4d656a75f0ff537456f"
@@ -81,24 +78,19 @@ class LoginModal extends React.Component { // eslint-disable-line react/prefer-s
             onFailure={failure}
             getProfile={true}
           >
-          KakaoTalk으로 로그인</KakaoLogin>
+            KakaoTalk으로 로그인
+          </KakaoLogin>
           <Separator>or</Separator>
-          <Input
-            type={'text'}
-            placeholder={'이메일 주소'}
-            className={'email'}
-          />
+          <Input type={'text'} placeholder={'이메일 주소'} className={'email'} />
           <Input
             type={'password'}
             placeholder={'비밀번호'}
             className={'password'}
           />
-          <Label>
-            비밀번호를 잊으셨나요?
-          </Label>
+          <Label>비밀번호를 잊으셨나요?</Label>
           <LoginButton>로그인</LoginButton>
           <Separator />
-          <Signup onSignupClick={this.onSignupClick}></Signup>
+          <Signup onSignupClick={this.onSignupClick} />
         </Container>
       </LoginModalWrapper>
     );
