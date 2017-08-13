@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 // request
@@ -94,6 +95,9 @@ const materialStyles = {
   },
 };
 class MeetUpInfoList extends React.Component {
+  static propTypes = {
+    onChangeMeetingOnMap: PropTypes.func.isRequired,
+  }
   state = {
     MeetUpElements: [],
   };
@@ -117,8 +121,9 @@ class MeetUpInfoList extends React.Component {
     });
   }
   onClickMeetInfo = (event, value) => {
-    console.log(event.target);
     console.log(value);
+    const seletedElements = this.state.MeetUpElements.filter((meetUpElement) => (meetUpElement.meetNo === value));
+    this.props.onChangeMeetingOnMap(seletedElements[0]);
   };
 
   render() {
@@ -129,6 +134,7 @@ class MeetUpInfoList extends React.Component {
             {
               this.state.MeetUpElements.map((meetUpElement) => (
                 <ListItem
+                  key={`meetUpElement-${meetUpElement.meetNo}`}
                   value={meetUpElement.meetNo}
                   innerDivStyle={materialStyles.listItem}
                   onClick={(event) => { this.onClickMeetInfo(event, meetUpElement.meetNo); }}
@@ -136,7 +142,7 @@ class MeetUpInfoList extends React.Component {
                   <MeetInfoWrapper>
                     <MeetInfoHeader>
                       <MIHTitle>{meetUpElement.title}</MIHTitle>
-                      <MIHLocInfo>{meetUpElement.address}</MIHLocInfo>
+                      <MIHLocInfo>{meetUpElement.strtDt} {meetUpElement.address}</MIHLocInfo>
                     </MeetInfoHeader>
                     <MIHContent>
                       <MIHCIcon src={meetUpElement.cmntThumbnail} />
@@ -150,46 +156,6 @@ class MeetUpInfoList extends React.Component {
                 </ListItem>
               ))
             }
-            <ListItem
-              value={0} innerDivStyle={materialStyles.listItem}
-              onClick={(event) => { this.onClickMeetInfo(event, 0); }}
-            >
-              <MeetInfoWrapper>
-                <MeetInfoHeader>
-                  <MIHTitle>라이츄 정기세션</MIHTitle>
-                  <MIHLocInfo>7.29 디캠프</MIHLocInfo>
-                </MeetInfoHeader>
-                <MIHContent>
-                  <MIHCIcon src={'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZDg9jXXfLo6WlibVQGYAH_gO8TYvPlqbOHD7v9Ks-i0G_Eat8nA'} />
-                  <MIHCInfo>디프만 | 김은영</MIHCInfo>
-                </MIHContent>
-                <MIHCProgressWrapper>
-                  <MIHCProgressBar><MIHCProgress /></MIHCProgressBar>
-                  <MIHCProgressInfo>5/10</MIHCProgressInfo>
-                </MIHCProgressWrapper>
-              </MeetInfoWrapper>
-            </ListItem>
-
-            <ListItem
-              value={3}
-              innerDivStyle={materialStyles.listItem}
-              onClick={(event) => { this.onClickMeetInfo(event, 0); }}
-            >
-              <MeetInfoWrapper>
-                <MeetInfoHeader>
-                  <MIHTitle>디프만 정기세션</MIHTitle>
-                  <MIHLocInfo>7.29 디캠프</MIHLocInfo>
-                </MeetInfoHeader>
-                <MIHContent>
-                  <MIHCIcon src={'https://secure.gravatar.com/avatar/9696fec405a6c206907f55486ea35fd9.jpg?s=1…d=https%3A%2F%2Fa.slack-edge.com%2F7fa9%2Fimg%2Favatars%2Fava_0013-192.png'} />
-                  <MIHCInfo>디프만 | 김은영</MIHCInfo>
-                </MIHContent>
-                <MIHCProgressWrapper>
-                  <MIHCProgressBar><MIHCProgress /></MIHCProgressBar>
-                  <MIHCProgressInfo>5/10</MIHCProgressInfo>
-                </MIHCProgressWrapper>
-              </MeetInfoWrapper>
-            </ListItem>
           </List>
 
         </Wrapper>

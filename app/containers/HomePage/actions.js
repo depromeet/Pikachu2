@@ -17,6 +17,7 @@
 
 import {
   CHANGE_USERNAME,
+  CHANGE_MEETING_ON_MAP,
 } from './constants';
 
 /**
@@ -32,3 +33,17 @@ export function changeUsername(name) {
     name,
   };
 }
+/**
+ * Changes the input field of the form
+ *
+ * @param  {meetNo} newMeeting The new text of the input field
+ *
+ * @return {object}    An action object with a type of CHANGE_MEETING_ON_MAP
+ */
+export function changeMeetingOnMap(newMeeting) {
+  return {
+    type: CHANGE_MEETING_ON_MAP,
+    newMeeting,
+  };
+}
+
