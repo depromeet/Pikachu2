@@ -90,7 +90,7 @@ const MIHCProgressInfo = styled.div`
 `;
 const materialStyles = {
   listItem: {
-    padding: 0,
+    padding: '8px 16px',
     textOverflow: 'ellipsis',
   },
 };
@@ -103,7 +103,6 @@ class MeetUpInfoList extends React.Component {
   };
 
   componentWillMount() {
-    console.log('MeetUpInfoList.js, componentWillMount');
     request({
       method: 'GET',
       url: 'http://localhost:3100/meets',
@@ -112,16 +111,14 @@ class MeetUpInfoList extends React.Component {
       },
     }, (error, response, body) => {
       if (!(response.statusCode < 200 || response.statusCode >= 300)) {
-        console.log(error);
+        // error case
       }
       let data = JSON.parse(body);
       data = data.data;
-      this.setState({ MeetUpElements: [...data.list] },
-        () => { console.log(this.state.MeetUpElements); });
+      this.setState({ MeetUpElements: [...data.list] });
     });
   }
   onClickMeetInfo = (event, value) => {
-    console.log(value);
     const seletedElements = this.state.MeetUpElements.filter((meetUpElement) => (meetUpElement.meetNo === value));
     this.props.onChangeMeetingOnMap(seletedElements[0]);
   };
