@@ -13,20 +13,24 @@ import { fromJS } from 'immutable';
 
 import {
   CHANGE_USERNAME,
+  CHANGE_MEETING_ON_MAP,
 } from './constants';
 
 // The initial state of the App
 const initialState = fromJS({
   username: '',
+  curMeetingOnMap: {},
 });
 
 function homeReducer(state = initialState, action) {
   switch (action.type) {
     case CHANGE_USERNAME:
-
       // Delete prefixed '@' from the github username
       return state
         .set('username', action.name.replace(/@/gi, ''));
+    case CHANGE_MEETING_ON_MAP:
+      return state
+        .set('curMeetingOnMap', action.newMeeting);
     default:
       return state;
   }

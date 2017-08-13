@@ -1,5 +1,6 @@
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import MUNHeader from './MUNHeader';
 import MUNHeaderTab from './MUNHeaderTab';
@@ -20,6 +21,9 @@ const MeetUpNaviWrapper = styled.div`
 `;
 
 class MeetUpNavi extends React.Component { // eslint-disable-line react/prefer-stateless-function
+  static propTypes = {
+    onChangeMeetingOnMap: PropTypes.func.isRequired,
+  }
   render() {
     return (
       <MeetUpNaviWrapper >
@@ -32,7 +36,7 @@ class MeetUpNavi extends React.Component { // eslint-disable-line react/prefer-s
           <MUNSubItem>인기순</MUNSubItem>
           <MUNSubItem>모임순</MUNSubItem>
         </MUNSubHeader>
-        <MeetUpInfoList />
+        <MeetUpInfoList onChangeMeetingOnMap={this.props.onChangeMeetingOnMap} />
       </MeetUpNaviWrapper>
     );
   }

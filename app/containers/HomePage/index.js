@@ -5,6 +5,8 @@
  */
 
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
@@ -13,7 +15,10 @@ import { makeSelectRepos, makeSelectLoading, makeSelectError } from 'containers/
 import GMap from 'components/GMap';
 import LeftNavigation from 'components/LeftNavigation';
 import { loadRepos } from '../App/actions';
-import { changeUsername } from './actions';
+import {
+  changeUsername,
+  changeMeetingOnMap,
+} from './actions';
 import { makeSelectUsername } from './selectors';
 import Container from './Container';
 
@@ -21,7 +26,9 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
   /**
    * when initial state username is not null, submit the form to load repos
    */
-
+  static propTypes = {
+    onChangeMeetingOnMap: PropTypes.func.isRequired,
+  }
   render() {
     return (
       <Container>
@@ -31,7 +38,7 @@ export class HomePage extends React.PureComponent { // eslint-disable-line react
             { name: 'description', content: 'A React.js Boilerplate application homepage' },
           ]}
         />
-        <LeftNavigation />
+        <LeftNavigation onChangeMeetingOnMap={this.props.onChangeMeetingOnMap} />
         <GMap />
       </Container>
     );
@@ -45,6 +52,7 @@ export function mapDispatchToProps(dispatch) {
       if (evt !== undefined && evt.preventDefault) evt.preventDefault();
       dispatch(loadRepos());
     },
+    onChangeMeetingOnMap: (meetNo) => dispatch(changeMeetingOnMap(meetNo)),
   };
 }
 
