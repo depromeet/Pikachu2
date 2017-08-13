@@ -1,47 +1,43 @@
 import React from 'react';
 import styled from 'styled-components';
 
+// request
+import request from 'request';
 // material-ui
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-
 import { List, ListItem } from 'material-ui/List';
-
+// style
 const Wrapper = styled.div`
   display: lex;
   overflow-y: scroll;
   height:80%;
   max-height:800px;
 `;
-
 const MeetInfoWrapper = styled.div`
   display:flex;
   flex-direction: column;
-  height:90px;
+  height:110px;
   padding: 5px 20px;
   background:#fff;
   margin: 1px;
   border-radius: 5px;
-  box-shadow: 0px 2px 10px #cccccc;
-
-  
+  box-shadow: 0px 2px 10px #cccccc;  
 `;
-
 const MeetInfoHeader = styled.div`
-  display:flex;
-  height:30px;
+  display: flex;
+  max-height: 60px;
 `;
-
 const MIHTitle = styled.div`
   flex: 1;
   float: left;
-  line-height: 30px;
+  line-height: 25px;
+  min-height: 50px;
   color: #737373;
 `;
-
 const MIHLocInfo = styled.div`
   flex: 1;
   float: right;
-  line-height: 30px;
+  line-height: 25px;
   color: #737373;
   text-align:right;
   font-size: 14px;
@@ -94,15 +90,33 @@ const MIHCProgressInfo = styled.div`
 const materialStyles = {
   listItem: {
     padding: 0,
+    textOverflow: 'ellipsis',
   },
 };
-
-
 class MeetUpInfoList extends React.Component {
   state = {
     MeetUpElements: [],
   };
-  onTouchListItem = (event, value) => {
+
+  componentWillMount() {
+    console.log('MeetUpInfoList.js, componentWillMount');
+    request({
+      method: 'GET',
+      url: 'http://localhost:3100/meets',
+      headers: {
+        Accept: 'application/json',
+      },
+    }, (error, response, body) => {
+      if (!(response.statusCode < 200 || response.statusCode >= 300)) {
+        console.log(error);
+      }
+      let data = JSON.parse(body);
+      data = data.data;
+      this.setState({ MeetUpElements: [...data.list] },
+        () => { console.log(this.state.MeetUpElements); });
+    });
+  }
+  onClickMeetInfo = (event, value) => {
     console.log(event.target);
     console.log(value);
   };
@@ -112,20 +126,33 @@ class MeetUpInfoList extends React.Component {
       <MuiThemeProvider>
         <Wrapper>
           <List defaultValue={2}>
-            <ListItem
-              onClick={(event) => { this.onTouchListItem(event, 1); }}
-              value={1}
-              primaryText="Brendan Lim"
-              nestedItems={[
+            {
+              this.state.MeetUpElements.map((meetUpElement) => (
                 <ListItem
-                  value={2}
-                  primaryText="Grace Ng"
-                />,
-              ]}
-            />
+                  value={meetUpElement.meetNo}
+                  innerDivStyle={materialStyles.listItem}
+                  onClick={(event) => { this.onClickMeetInfo(event, meetUpElement.meetNo); }}
+                >
+                  <MeetInfoWrapper>
+                    <MeetInfoHeader>
+                      <MIHTitle>{meetUpElement.title}</MIHTitle>
+                      <MIHLocInfo>{meetUpElement.address}</MIHLocInfo>
+                    </MeetInfoHeader>
+                    <MIHContent>
+                      <MIHCIcon src={meetUpElement.cmntThumbnail} />
+                      <MIHCInfo>{meetUpElement.cmntNm} | {meetUpElement.userNm}</MIHCInfo>
+                    </MIHContent>
+                    <MIHCProgressWrapper>
+                      <MIHCProgressBar><MIHCProgress /></MIHCProgressBar>
+                      <MIHCProgressInfo>{meetUpElement.joinCnt}/{meetUpElement.maxJoinCnt}</MIHCProgressInfo>
+                    </MIHCProgressWrapper>
+                  </MeetInfoWrapper>
+                </ListItem>
+              ))
+            }
             <ListItem
               value={0} innerDivStyle={materialStyles.listItem}
-              onClick={(event) => { this.onTouchListItem(event, 0); }}
+              onClick={(event) => { this.onClickMeetInfo(event, 0); }}
             >
               <MeetInfoWrapper>
                 <MeetInfoHeader>
@@ -143,7 +170,11 @@ class MeetUpInfoList extends React.Component {
               </MeetInfoWrapper>
             </ListItem>
 
-            <ListItem value={3} innerDivStyle={materialStyles.listItem}>
+            <ListItem
+              value={3}
+              innerDivStyle={materialStyles.listItem}
+              onClick={(event) => { this.onClickMeetInfo(event, 0); }}
+            >
               <MeetInfoWrapper>
                 <MeetInfoHeader>
                   <MIHTitle>디프만 정기세션</MIHTitle>
