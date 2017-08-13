@@ -1,0 +1,83 @@
+{
+   "swagger": "2.0",
+   "info": {
+     "title": "피카츄 만남이 쉬워진다.(가명)",
+     "description": "피카츄 스웨거 api리스트 문서입니다.",
+     "version": "1.0",
+     "contact": {
+       "email": "kane7274@gmail.com"
+     }
+   },
+   "produces": ["application/json"],
+   "host": "localhost:3100",
+   "basePath": "/",
+   "paths": {
+     "/cmnts": {
+       "get": {
+         "summary": "커뮤니티 리스트",
+         "tags": ["/cmnts"],
+         "description": "회원이 소속한 커뮤니티의 정보를 가지고 옵니다.\n좌측 사이드메뉴그룹리스트",
+         "parameters": [],
+         "responses": {},
+         "produces": [
+          "application/json"
+          ]
+       }
+     },
+      "/meets": {
+       "get": {
+         "summary": "모임정보리스트",
+         "tags": ["/meets"],
+         "description": "회원이 참여할 수 있는 모임정보를 가지고 옵니다.\n좌측 사이드메뉴모임정보리스트(아직정렬없어요)",
+         "parameters": [],
+         "responses": {},
+         "produces": [
+          "application/json"
+          ]
+       }
+     },
+     "/meets/{cmntNo}": {
+       "get": {
+         "summary": "모임정보리스트",
+         "tags": ["/meets"],
+         "description": "회원이 소속한 커뮤니티에서 진행중인 모임정보를 가지고 옵니다.\n커뮤니티 클릭 후 좌측 사이드메뉴모임정보리스트(아직정렬없어요)",
+         "parameters": [
+          {
+            "name": "cmntNo",
+            "in": "path",
+            "description": "모임을 주최하는 커뮤니티 번호",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+         "responses": {},
+         "produces": [
+          "application/json"
+          ]
+       }
+     },
+    "/meets/{meetNo}/joinusers": {
+      "get": {
+         "summary": "모임에 대한 참여자 정보",
+         "tags": ["/meets"],
+         "description": "참여할 수 있는 모임중에 다른사람들이 참여중인 정보를 가지고온다.",
+         "parameters": [
+          {
+            "name": "meetNo",
+            "in": "path",
+            "description": "참여자의 정보를 가지고 오기 위한 모임번호",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+         "responses": {},
+         "produces": [
+          "application/json"
+          ]
+       }
+    }
+
+   }
+}

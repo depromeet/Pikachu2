@@ -15,6 +15,7 @@ const SignupButton = styled.button`
   border: 1px solid #ededed;
   height: 34px;
   padding: 0 20px;
+  color: #000;
 `;
 
 function Signup(props) {

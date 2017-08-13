@@ -83,7 +83,7 @@ const MIHCProgress = styled.div`
   height: 8px;
   width: 55%;
   border-radius:4px;
-  background: linear-gradient(to bottom,  rgba(233,233,233,1) 0%,rgba(200,200,200,1) 100%);
+  background: linear-gradient(to bottom,  rgba(230,230,230,1) 20%,rgba(210,210,210,1) 100%);
 `;
 const MIHCProgressInfo = styled.div`
   flex: 1;

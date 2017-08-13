@@ -1,4 +1,6 @@
 /* global google */
+/* eslint-disable react/jsx-boolean-value */
+import canUseDOM from 'can-use-dom';
 import React, {
   Component,
 } from 'react';
@@ -8,16 +10,35 @@ import {
   withGoogleMap,
   GoogleMap,
   Marker,
+  InfoWindow,
 } from 'react-google-maps';
 import Container from './Container';
+import MeetUpInfoWindow from './MeetUpInfoWindow';
 
-const GettingStartedGoogleMap = withGoogleMap((props) => (
+const geolocation = (
+  canUseDOM && navigator.geolocation ? navigator.geolocation :
+  ({
+    getCurrentPosition(success, failure) {
+      failure('fail');
+    },
+  })
+);
+
+const PikachuMap = withGoogleMap((props) => (
   <GoogleMap
     ref={props.onMapLoad}
     defaultZoom={14}
-    defaultCenter={{ lat: 37.4818227, lng: 126.9079878 }}
+    center={props.center}
     onClick={props.onMapClick}
   >
+    {props.center && (
+      <InfoWindow
+        disableAutoPan={true}
+        position={props.center}
+      >
+        <MeetUpInfoWindow></MeetUpInfoWindow>
+      </InfoWindow>
+    )}
     {props.markers.map((marker) => (
       <Marker
         {...marker}
@@ -27,18 +48,46 @@ const GettingStartedGoogleMap = withGoogleMap((props) => (
   </GoogleMap>
 ));
 
-export default class GettingStartedExample extends Component {
+export default class GMap extends Component {
 
   state = {
     markers: [{
       position: {
-        lat: 37.4828240,
+        lat: 37.4888240,
         lng: 126.9100000,
       },
       key: 'Taiwan',
       defaultAnimation: 2,
     }],
+    center: null,
   };
+
+  componentDidMount() {
+    geolocation.getCurrentPosition((position) => { // eslint-disable-line consistent-return
+      if (this.isUnMounted) {
+        return false;
+      }
+
+      this.setState({
+        center: {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude,
+        },
+      });
+    }, () => {
+      if (this.isUnmounted) {
+        return;
+      }
+      this.setState({
+        lat: 37.4818227,
+        lng: 126.9079878,
+      });
+    });
+  }
+
+  componentWillUnmount() {
+    this.isUnmounted = true;
+  }
 
   handleMapLoad = this.handleMapLoad.bind(this);
   handleMapClick = this.handleMapClick.bind(this);
@@ -67,13 +116,6 @@ export default class GettingStartedExample extends Component {
     this.setState({
       markers: nextMarkers,
     });
-
-    if (nextMarkers.length === 3) {
-      this.props.toast( // eslint-disable-line react/prop-types
-        'Right click on the marker to remove it',
-        'Also check the code!'
-      );
-    }
   }
 
   handleMarkerRightClick(targetMarker) {
@@ -94,13 +136,14 @@ export default class GettingStartedExample extends Component {
         <Helmet
           title="피카츄 만남이 쉬워진다."
         />
-        <GettingStartedGoogleMap
+        <PikachuMap
           containerElement={
             <div style={{ height: '100%' }} />
           }
           mapElement={
             <div style={{ height: '100%' }} />
           }
+          center={this.state.center}
           onMapLoad={this.handleMapLoad}
           onMapClick={this.handleMapClick}
           markers={this.state.markers}

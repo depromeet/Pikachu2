@@ -1,5 +1,5 @@
-import _ from 'lodash';
-import camel from 'to-camel-case';
+const _ = require('lodash');
+const camel = require('to-camel-case');
 
 const convertToCamel = (result) => {
   const camalResult = {};
@@ -14,6 +14,4 @@ const convertToCamel = (result) => {
   return camalResult;
 };
 
-export default {
-  convertToCamel,
-};
+exports.convertToCamel = convertToCamel;
